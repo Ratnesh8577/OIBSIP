@@ -1,0 +1,5 @@
+Cluster,Recency,Frequency,Monetary,Customer_Count,Customer_Type
+0,266.3,1.0,180.99,570,High-Value Customers
+1,822.27,1.03,195.7,545,At-Risk Customers
+2,305.21,2.19,380.79,341,High-Value Customers
+3,458.21,1.6,1857.55,78,At-Risk Customers
