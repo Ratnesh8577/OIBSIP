@@ -1,211 +1,381 @@
-# Data Cleaning and Preprocessing
+# 🧹 Data Cleaning and Preprocessing
 
 ## 📌 Project Overview
 
-This project demonstrates professional-level data cleaning and preprocessing using Python. A deliberately messy dataset is systematically transformed into a clean, consistent, and analysis-ready dataset.
+This project focuses on **Data Cleaning and Preprocessing** using **Python, Pandas, NumPy, and Jupyter Notebook**.
 
-The project focuses on identifying data-quality issues, handling missing values, removing duplicates, standardizing inconsistent data, detecting outliers, correcting data types, and documenting every cleaning decision.
+The objective is to transform a raw dataset into a **clean, consistent, validated, and analysis-ready dataset** by identifying and handling missing values, duplicate records, inconsistent formatting, incorrect data types, and potential numerical outliers.
+
+The complete workflow follows a systematic data-quality process from **raw data inspection to final cleaned dataset export**.
 
 ---
 
-## 🎯 Objective
+## 🎯 Objectives
 
-Demonstrate professional-level data cleaning skills by taking a deliberately messy dataset and systematically transforming it into a clean, reliable, and analysis-ready dataset.
+* Load and inspect the raw dataset.
+* Create a comprehensive **Data Quality Report**.
+* Identify and handle missing values.
+* Detect and remove duplicate rows.
+* Standardise inconsistent categorical and text values.
+* Correct inappropriate data types.
+* Detect numerical outliers using the **IQR method**.
+* Decide whether outliers should be retained, capped, or removed.
+* Compare the dataset before and after cleaning.
+* Validate the final cleaned dataset.
+* Export the cleaned dataset as a new CSV file.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Python**
-* **Pandas** – Data manipulation and cleaning
-* **NumPy** – Numerical operations
-* **Jupyter Notebook** – Data analysis and documentation
+* 🐍 **Python**
+* 🐼 **Pandas**
+* 🔢 **NumPy**
+* 📓 **Jupyter Notebook**
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-DataAnalytics-L1-DataCleaning/
+Data-Cleaning-and-Preprocessing/
 │
-├── Data_Cleaning.ipynb
-├── README.md
-├── requirements.txt
-│
-├── dataset/
-│   ├── messy_dataset.csv
-│   └── cleaned_dataset.csv
-│
-└── screenshots/
-    ├── data_quality_report.png
-    ├── outlier_analysis.png
-    └── before_after_summary.png
+├── 📓 Data_Cleaning_Preprocessing.ipynb
+├── 📄 tested(1).csv
+├── 📄 tested_cleaned.csv
+└── 📄 README.md
 ```
 
 ---
 
-## 🔍 Data Cleaning Workflow
-
-### 1. Dataset Loading
-
-The original messy dataset is loaded using Pandas and inspected to understand its structure and quality.
-
-### 2. Data Quality Report
-
-A comprehensive data-quality report is created containing:
-
-* Number of rows and columns
-* Null values per column
-* Duplicate rows
-* Data types
-* Potential data type issues
-* Minimum and maximum values
-* Value-range anomalies
-
----
-
-## 🧹 Missing Data Handling
-
-Missing values are analyzed on a column-by-column basis.
-
-Different strategies are considered depending on the characteristics of each column:
-
-* Mean imputation
-* Median imputation
-* Mode imputation
-* Forward fill
-* Row deletion
-
-Each decision is documented in the notebook with a justification.
-
-For example, median imputation may be preferred for numerical columns containing outliers because the median is less sensitive to extreme values.
-
----
-
-## ♻️ Duplicate Removal
-
-Duplicate records are identified and removed from the dataset.
-
-The notebook documents:
-
-* Number of duplicate rows before cleaning
-* Number of duplicates removed
-* Number of rows remaining after cleaning
-
----
-
-## 🔄 Data Standardisation
-
-Inconsistent values and formatting are standardized to ensure consistency across the dataset.
-
-Examples include:
-
-* `"Male"`, `"male"`, `"M"` → `"Male"`
-* `"Female"`, `"female"`, `"F"` → `"Female"`
-* Standardizing text capitalization
-* Removing unnecessary whitespace
-* Converting inconsistent date formats into `datetime`
-
----
-
-## 📊 Outlier Detection
-
-Outliers in numerical columns are identified using the **Interquartile Range (IQR)** method.
-
-The general process includes:
-
-1. Calculate Q1
-2. Calculate Q3
-3. Calculate IQR
-4. Determine lower and upper bounds
-5. Identify observations outside the bounds
-
-Outliers are then evaluated individually to determine whether they should be:
-
-* Retained
-* Capped
-* Removed
-
-The reasoning for each decision is documented in the notebook.
-
----
-
-## 🔢 Data Type Correction
-
-All columns are converted to appropriate data types.
-
-Examples:
-
-| Data                | Expected Type     |
-| ------------------- | ----------------- |
-| Customer/Record IDs | `string`          |
-| Dates               | `datetime`        |
-| Monetary values     | `float`           |
-| Quantities          | `integer`         |
-| Categorical values  | `string/category` |
-
-Correct data types improve consistency and make the cleaned dataset suitable for further analysis.
-
----
-
-## 📋 Before vs After Data Quality Summary
-
-A comparison is created to demonstrate the improvement in data quality.
-
-| Metric           |   Before Cleaning |    After Cleaning |
-| ---------------- | ----------------: | ----------------: |
-| Row Count        | Dataset-dependent | Dataset-dependent |
-| Null Count       | Dataset-dependent | Dataset-dependent |
-| Duplicate Count  | Dataset-dependent | Dataset-dependent |
-| Data Type Issues | Dataset-dependent | Dataset-dependent |
-| Outliers         | Dataset-dependent | Dataset-dependent |
-
-The actual values are calculated directly from the dataset in the notebook.
-
----
-
-## 💾 Output
-
-After completing the cleaning process, the final analysis-ready dataset is saved as:
+## 🔄 Data Cleaning Workflow
 
 ```text
-dataset/cleaned_dataset.csv
+Raw Dataset
+     ↓
+Load Dataset
+     ↓
+Inspect Structure
+     ↓
+Data Quality Report
+     ↓
+Missing Value Analysis
+     ↓
+Duplicate Detection
+     ↓
+Standardisation
+     ↓
+Data Type Correction
+     ↓
+Outlier Detection
+     ↓
+Outlier Treatment Decision
+     ↓
+Before vs After Comparison
+     ↓
+Final Validation
+     ↓
+Export Cleaned Dataset
 ```
 
-Example:
+---
+
+# 🔍 1. Data Quality Assessment
+
+The initial dataset was inspected using Pandas to understand its structure and identify potential data-quality issues.
+
+The following checks were performed:
+
+* Dataset shape
+* Column names
+* Data types
+* Missing values
+* Duplicate rows
+* Unique values
+* Numerical ranges
+* Potential invalid values
+
+### Key checks
 
 ```python
-df.to_csv("dataset/cleaned_dataset.csv", index=False)
+df.info()
+df.describe()
+df.isnull().sum()
+df.duplicated().sum()
 ```
 
 ---
 
-## 📈 Key Skills Demonstrated
+# 🕳️ 2. Missing Data Handling
 
-* Data Quality Assessment
-* Missing Value Handling
-* Duplicate Detection
-* Data Standardisation
-* Outlier Detection
-* IQR Method
-* Data Type Conversion
-* Data Validation
-* Data Preprocessing
-* Documentation of Data Cleaning Decisions
-* Pandas and NumPy
+Missing values were analyzed column by column and an appropriate strategy was selected based on the type and characteristics of each variable.
+
+### Strategy
+
+| Column        | Issue               | Treatment         | Reason                            |
+| ------------- | ------------------- | ----------------- | --------------------------------- |
+| `Age`         | Missing values      | Median imputation | Reduces influence of extreme ages |
+| `Fare`        | Missing value       | Median imputation | Only one missing value            |
+| `Cabin`       | Many missing values | `"Unknown"`       | Avoids unnecessary row deletion   |
+| Other columns | No missing values   | No action         | Already complete                  |
+
+### Example
+
+```python
+df["Age"] = df["Age"].fillna(df["Age"].median())
+df["Fare"] = df["Fare"].fillna(df["Fare"].median())
+df["Cabin"] = df["Cabin"].fillna("Unknown")
+```
+
+After treatment, the dataset was checked again to ensure that no unintended missing values remained.
 
 ---
 
-## 🚀 Expected Outcome
+# 🔁 3. Duplicate Removal
 
-The final output is a clean, consistent, and analysis-ready dataset with:
+Duplicate rows were identified using:
 
-* Reduced missing data
-* No unintended duplicate records
-* Consistent formatting
-* Correct data types
-* Properly evaluated outliers
-* Documented cleaning decisions
+```python
+df.duplicated().sum()
+```
+
+No duplicate rows were found in the dataset.
+
+The duplicate-removal step was still included in the workflow:
+
+```python
+df = df.drop_duplicates()
+df = df.reset_index(drop=True)
+```
+
+### Result
+
+* Duplicate rows before cleaning: **0**
+* Duplicate rows removed: **0**
+* Duplicate rows after cleaning: **0**
+
+---
+
+# 🧹 4. Standardisation
+
+Text values were standardised to ensure consistent formatting.
+
+### Operations performed
+
+* Removed leading and trailing spaces.
+* Standardised gender values.
+* Standardised `Embarked` codes.
+* Cleaned text fields.
+* Converted identifier columns to string.
+
+### Example
+
+```python
+df["Sex"] = (
+    df["Sex"]
+    .astype("string")
+    .str.strip()
+    .str.lower()
+    .replace({
+        "m": "Male",
+        "male": "Male",
+        "f": "Female",
+        "female": "Female"
+    })
+)
+```
+
+For `Embarked`:
+
+```python
+df["Embarked"] = (
+    df["Embarked"]
+    .astype("string")
+    .str.strip()
+    .str.upper()
+)
+```
+
+The dataset does not contain a date column, so datetime conversion was not required.
+
+---
+
+# 🔢 5. Data Type Correction
+
+Data types were reviewed and corrected according to the meaning of each column.
+
+### Examples
+
+| Column        | Correct Type |
+| ------------- | ------------ |
+| `PassengerId` | String       |
+| `Survived`    | Integer      |
+| `Pclass`      | Integer      |
+| `Name`        | String       |
+| `Sex`         | String       |
+| `Age`         | Float        |
+| `SibSp`       | Integer      |
+| `Parch`       | Integer      |
+| `Ticket`      | String       |
+| `Fare`        | Float        |
+| `Cabin`       | String       |
+| `Embarked`    | String       |
+
+Identifiers such as `PassengerId` and `Ticket` were treated as **strings rather than numerical measurements**.
+
+---
+
+# 📊 6. Outlier Detection
+
+Potential outliers were identified using the **Interquartile Range (IQR)** method.
+
+The IQR method was applied to numerical columns.
+
+```python
+Q1 = df[column].quantile(0.25)
+Q3 = df[column].quantile(0.75)
+
+IQR = Q3 - Q1
+
+lower_limit = Q1 - 1.5 * IQR
+upper_limit = Q3 + 1.5 * IQR
+```
+
+Values below the lower limit or above the upper limit were identified as potential outliers.
+
+### Potential outliers were identified in:
+
+* `Age`
+* `SibSp`
+* `Parch`
+* `Fare`
+
+---
+
+# ⚖️ 7. Outlier Treatment Decision
+
+The identified outliers were **retained** rather than automatically removed.
+
+This decision was made because extreme values can represent legitimate passenger characteristics.
+
+For example:
+
+* A passenger may legitimately have a high fare.
+* A passenger may legitimately be older.
+* Some passengers may have several siblings or spouses.
+* Some passengers may have multiple parents or children.
+
+Therefore, removing these observations could result in unnecessary information loss.
+
+---
+
+# 📋 8. Before vs After Cleaning
+
+A comparison table was created to measure the impact of the cleaning process.
+
+| Metric         |     Before Cleaning | After Cleaning |
+| -------------- | ------------------: | -------------: |
+| Rows           |                 418 |            418 |
+| Columns        |                  12 |             12 |
+| Missing Values |                 414 |              0 |
+| Duplicate Rows |                   0 |              0 |
+| Data Types     | Required correction |      Corrected |
+
+The cleaning process removed missing-value issues while preserving valid observations.
+
+---
+
+# ✅ 9. Final Validation
+
+The final dataset was validated using:
+
+```python
+print("Rows:", df.shape[0])
+print("Columns:", df.shape[1])
+print("Missing values:", df.isnull().sum().sum())
+print("Duplicate rows:", df.duplicated().sum())
+print(df.dtypes)
+```
+
+### Final quality checks
+
+* ✅ No missing values
+* ✅ No duplicate rows
+* ✅ Consistent categorical formatting
+* ✅ Correct numerical data types
+* ✅ Identifier fields stored appropriately
+* ✅ Potential outliers reviewed
+* ✅ Dataset structure preserved
+
+---
+
+# 💾 10. Export Cleaned Dataset
+
+The cleaned dataset was exported to a new CSV file so that the original raw dataset remained unchanged.
+
+```python
+df.to_csv(
+    "tested_cleaned.csv",
+    index=False
+)
+```
+
+Output:
+
+```text
+tested_cleaned.csv
+```
+
+---
+
+# 📈 Results
+
+The data-cleaning process successfully converted the raw dataset into a cleaner and more analysis-ready dataset.
+
+### Summary
+
+* **418** original records
+* **12** columns
+* **414** missing cells handled
+* **0** duplicate rows
+* Inconsistent text formatting standardised
+* Data types corrected
+* Potential numerical outliers identified using IQR
+* Legitimate extreme values retained
+* Cleaned dataset exported successfully
+
+---
+
+# 🎓 Key Learning Outcomes
+
+Through this project, I practiced:
+
+* Data quality assessment
+* Missing-value analysis
+* Median imputation
+* Missing categorical value handling
+* Duplicate detection
+* Text standardisation
+* Data type conversion
+* IQR-based outlier detection
+* Data validation
+* Before-and-after data comparison
+* CSV data export
+* Pandas and NumPy data manipulation
+
+---
+
+# 🚀 Future Improvements
+
+The project can be extended with:
+
+* Exploratory Data Analysis (EDA)
+* Data visualisation using Matplotlib and Seaborn
+* Correlation analysis
+* Feature engineering
+* Automated data-quality checks
+* Statistical analysis
+* Machine-learning preprocessing
 
 ---
 
@@ -213,12 +383,16 @@ The final output is a clean, consistent, and analysis-ready dataset with:
 
 **Ratnesh Chauhan**
 
-**OIBSIP – Data Analytics Internship**
+### 🔗 Connect With Me
+
+* **GitHub:** Ratnesh8577
+* **LinkedIn:** Ratnesh Chauhan
+* **LeetCode:** RatneshChauhan279
 
 ---
 
-## 📝 Conclusion
+## ⭐ Project Summary
 
-Data cleaning is an essential step in any data analysis or machine learning workflow. This project demonstrates a systematic approach to identifying and resolving common data-quality problems while documenting the reasoning behind each decision.
+> **Clean data is the foundation of reliable analysis.**
 
-The resulting cleaned dataset can be confidently used for further exploratory analysis, visualization, reporting, or machine learning tasks.
+This project demonstrates a complete and practical **data cleaning and preprocessing workflow using Python, Pandas, NumPy, and Jupyter Notebook**, preparing raw data for reliable downstream analysis and machine-learning applications.
