@@ -260,7 +260,6 @@ The project focuses on:
 * Precision
 * Recall
 * F1-score
-* ROC-AUC
 * Feature importance
 
 **Technologies:** Python, Pandas, NumPy, Scikit-learn, Imbalanced-learn, Matplotlib, Seaborn
