@@ -259,7 +259,6 @@ The project focuses on:
 * Random Forest
 * Precision
 * Recall
-* F1-score
 * Feature importance
 
 **Technologies:** Python, Pandas, NumPy, Scikit-learn, Imbalanced-learn, Matplotlib, Seaborn
