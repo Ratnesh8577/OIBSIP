@@ -513,7 +513,7 @@ Each project is independently organized with its own:
 * Dataset
 * README
 * Requirements
-* Screenshots / outputs
+* Screenshots
 
 The repository serves as a portfolio of practical **Data Analytics, Machine Learning, and NLP projects**.
 
